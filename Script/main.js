@@ -45,10 +45,18 @@ revealOnScroll();
 
 
 //  hamburger script 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show-menu");
-    menuToggle.classList.toggle("active");
+    if (!menuToggle || !navLinks) {
+        console.error("Hamburger elements not found");
+        return;
+    }
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show-menu");
+        menuToggle.classList.toggle("active");
+        console.log("Hamburger clicked");
+    });
 });
