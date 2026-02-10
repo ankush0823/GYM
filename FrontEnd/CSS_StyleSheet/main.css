@@ -1,0 +1,283 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #0e0e0e;
+    color: #ffffff;
+}
+
+/* ================= HEADER / NAV ================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo h2 {
+    color: #ff3c00;
+    font-size: 1.6rem;
+}
+
+/* MENU */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #ff3c00;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-btn a {
+    text-decoration: none;
+    padding: 8px 18px;
+    background: #ff3c00;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* ================= HERO ================= */
+.hero {
+    min-height: 90vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://images.unsplash.com/photo-1554284126-aa88f22d8b74") center/cover no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    color: #ff3c00;
+    font-size: 3rem;
+    max-width: 600px;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.hero p {
+    max-width: 500px;
+    margin: 20px 0;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-buttons a {
+    padding: 12px 28px;
+    background: #ff3c00;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #ff3c00;
+    font-size: 2.3rem;
+}
+
+/* ================= WHY US ================= */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.feature-box {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ================= PROGRAMS ================= */
+.program-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.program-card {
+    height: 200px;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1599058917212-d750089bc07b") center/cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+/* ================= PRICING ================= */
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.price-card {
+    background: #1a1a1a;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.price-card h3 {
+    color: #ff3c00;
+}
+
+.price-card a {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 24px;
+    background: #ff3c00;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* ================= TRAINERS ================= */
+.trainer-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.trainer-card {
+    height: 260px;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1571019613914-85f342c55f26") center/cover no-repeat;
+
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* ================= TESTIMONIALS ================= */
+.testimonials {
+    background: #111;
+    padding: 80px 20px;
+}
+
+.review {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* ================= CTA ================= */
+.cta {
+    background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://images.unsplash.com/photo-1517960413843-0aee8e2d471c") center/cover no-repeat;
+
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cta a {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 14px 35px;
+    background: #ff3c00;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #000;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* ================= RESPONSIVE FIX ================= */
+@media (max-width: 900px) {
+    nav ul {
+        display: none;
+    }
+
+    .features,
+    .program-list,
+    .pricing-cards,
+    .trainer-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-btn {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .features,
+    .program-list,
+    .pricing-cards,
+    .trainer-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+}
