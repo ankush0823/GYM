@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Now - PowerFit Gym</title>
+    <link rel="stylesheet" href="Style/joinNow.css">
+</head>
+<body>
+
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Join PowerFit Gym </h2>
+            <p>Start your fitness journey today</p>
+
+            <form id="registerForm">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="input-group">
+                    <label>Select Plan</label>
+                    <select id="plan">
+                        <option value="">-- Choose Plan --</option>
+                        <option value="basic">Basic Plan</option>
+                        <option value="standard">Standard Plan</option>
+                        <option value="premium">Premium Plan</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Create password">
+                </div>
+
+                <button type="submit" class="register-btn">Join Now</button>
+
+                <p class="extra-text">
+                    Already a member? <a href="login.html">Login</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="js/join.js"></script>
+
+</body>
+</html>
