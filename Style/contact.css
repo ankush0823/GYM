@@ -1,0 +1,68 @@
+/* Contact Page */
+
+.contact-section {
+    padding: 60px 10%;
+    background: #111;
+    color: white;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.contact-info h2 {
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: #ccc;
+}
+
+.info-item {
+    margin-top: 20px;
+}
+
+.contact-form-box {
+    flex: 1;
+    min-width: 280px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    color: black;
+}
+
+.contact-form-box textarea,
+.contact-form-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    background-color: #ff3c00;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    background-color: #e63200;
+}
+
+.map {
+    margin-top: 40px;
+}
