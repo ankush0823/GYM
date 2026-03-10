@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - THE TITAN GYM</title>
+    <link rel="stylesheet" href="Style/admin.css" />
+</head>
+
+<body>
+
+    <!-- DASHBOARD WRAPPER -->
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>THE TITAN GYM</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" data-section="dashboard"><a href="javascript:void(0)">Dashboard</a></li>
+                <li data-section="settings"><a href="javascript:void(0)">Settings</a></li>
+                <li data-section="enquiries"><a href="javascript:void(0)">Enquiries</a></li>
+            </ul>
+        </div>  
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+
+            <!-- DASHBOARD SECTION -->
+            <div id="dashboard-section" class="dashboard-section">
+                <h2>Dashboard Summary</h2>
+
+                <!-- STATS CARDS -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Members</h3>
+                        <p id="totalMembers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Memberships</h3>
+                        <p id="activeMemberships">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Enquiries</h3>
+                        <p id="totalEnquiries">0</p>
+                    </div>
+                </div>
+
+                <!-- MEMBERS TABLE -->
+                <div class="members-section">
+                    <h2>Members Details</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Membership Plan</th>
+                                <th>Join Date</th>
+                                <th>Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SETTINGS SECTION -->
+            <div id="settings-section" class="dashboard-section" style="display:none;">
+                <h2>Settings</h2>
+                <div class="settings-tab" id="admin-profile-tab">
+                    <h3>Admin Profile</h3>
+                    <form id="adminProfileForm">
+                        <div class="form-group">
+                            <label for="adminName">Name:</label>
+                            <input type="text" id="adminName" value="Admin Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminEmail">Email:</label>
+                            <input type="email" id="adminEmail" value="admin@gym.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Password:</label>
+                            <input type="password" id="adminPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminProfilePic">Profile Picture:</label>
+                            <input type="file" id="adminProfilePic" accept="image/*">
+                        </div>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ENQUIRIES SECTION -->
+            <div id="enquiries-section" class="dashboard-section"  style="display:none;">
+                <h2>Enquiries / Contact Messages</h2>
+                <table class="enquiries-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Date Submitted</th> 
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enquiriesTable"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="Script/admin.js"></script>
+</body>
+
+</html>

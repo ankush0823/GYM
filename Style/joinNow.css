@@ -1,48 +1,183 @@
-/* Register Page Styling */
+/* ===============================
+GLOBAL
+=============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ===============================
+BODY
+=============================== */
+
 body{
-    margin: 0;
-    padding: 0;
-}
-.register-container {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 15px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url("../Images/hero-background.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
 }
 
-.register-box {
-    background: white;
-    padding: 35px;
-    width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    text-align: center;
+/* ===============================
+CONTAINER
+=============================== */
+
+.login-container,
+.register-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
 }
 
-.register-box select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+/* ===============================
+BOX
+=============================== */
+
+.login-box,
+.register-box{
+    width:100%;
+    max-width:400px;
+    background:#161616;
+    padding:35px;
+    border-radius:12px;
+    border:1px solid #222;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-.register-btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: #ff3c00;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+/* ===============================
+TITLE
+=============================== */
+
+.login-box h2,
+.register-box h2{
+    font-size:28px;
+    margin-bottom:5px;
+    color:#ff3c3c;
 }
 
-.register-btn:hover {
-    background-color: #e63200;
+.login-box p,
+.register-box p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+/* ===============================
+INPUT GROUP
+=============================== */
+
+.input-group{
+    text-align:left;
+    margin-bottom:18px;
+}
+
+.input-group label{
+    font-size:14px;
+    color:#bbb;
+}
+
+.input-group input,
+.input-group select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:6px;
+    border:1px solid #333;
+    background:#0f0f0f;
+    color:white;
+    outline:none;
+    transition:0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+    border-color:#ff3c3c;
+}
+
+/* ===============================
+BUTTON
+=============================== */
+
+.login-btn,
+.register-btn{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    background:#ff3c3c;
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover,
+.register-btn:hover{
+    background:#ff2020;
+    transform:translateY(-2px);
+}
+
+/* ===============================
+EXTRA TEXT
+=============================== */
+
+.extra-text{
+    margin-top:18px;
+    font-size:14px;
+    color:#aaa;
+}
+
+.extra-text a{
+    color:#ff3c3c;
+    text-decoration:none;
+}
+
+.extra-text a:hover{
+    text-decoration:underline;
+}
+
+/* ===============================
+MOBILE RESPONSIVE
+=============================== */
+
+@media (max-width:600px){
+
+body{
+    padding:30px 15px;
+}
+
+.login-box,
+.register-box{
+    max-width:100%;
+    padding:25px;
+}
+
+.login-box h2,
+.register-box h2{
+    font-size:22px;
+}
+
+.input-group input,
+.input-group select{
+    padding:10px;
+}
+
+.login-btn,
+.register-btn{
+    padding:12px;
+}
+
 }

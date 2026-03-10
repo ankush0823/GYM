@@ -1,179 +1,165 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="/Style/main.css" />
-
-    <title>Gym Website</title>
-  </head>
-  <body>
-    <script src="/Script/main.js"></script>
+    <title>THE TITAN GYM</title>
+    <link rel="stylesheet" href="Style/index.css" />
+</head>
+<body>
+     
 
     <!-- ================= HEADER / NAVBAR ================= -->
     <header>
-      <nav>
-        <div class="logo">
-          <h2>THE TITAN GYM</h2>
-        </div>
+        <nav>
+            <div class="logo">
+                <h2>THE TITAN GYM</h2>
+            </div>
 
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#program">Programs</a></li>
-          <li><a href="#price">Pricing</a></li>
-          <li><a href="#trainer">Trainers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#program">Programs</a></li>
+                <li><a href="#price">Pricing</a></li>
+                <li><a href="#trainer">Trainers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
 
-        <div class="nav-btn">
-          <a href="login.html">Login</a>
-          <a href="joinNow.html">Join Now</a>
-        </div>
+            <div class="nav-btn">
+                <a href="login.html">Login</a>
+                <a href="joinNow.html" class="primary-btn">Join Now</a>
+            </div>
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
+            <!-- HAMBURGER -->
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     </header>
 
     <!-- ================= HERO SECTION ================= -->
     <section id="home" class="hero">
-      <h1>Transform Your Body</h1>
-      <h2>Transform Your Life</h2>
-      <p>India’s best gym with certified trainers and modern equipment.</p>
-
-      <div class="hero-buttons">
-        <a href="joinNow.html">Join Now</a>
-        <a href="#">Free Trial</a>
-      </div>
+        <div class="hero-overlay"></div>
+        <img src="Images/hero-background.jpg" alt="hero-background">
+        <div class="hero-text">
+            <h1>Transform Your Body</h1>
+            <h2>Transform Your Life</h2>
+            <p>India’s best gym with certified trainers and modern equipment.</p>
+            <a href="joinNow.html" class="primary-btn">Join Now</a>
+        </div>
     </section>
 
     <!-- ================= WHY CHOOSE US ================= -->
     <section class="why-us">
-      <h2>Why Choose Us</h2>
-
-      <div class="features">
-        <div class="feature-box">
-          <h3>Certified Trainers</h3>
-          <p>Professional and experienced trainers.</p>
+        <h2>Why Choose Us</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>Certified Trainers</h3>
+                <p>Professional and experienced trainers.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Modern Equipment</h3>
+                <p>Latest machines for best results.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Flexible Timings</h3>
+                <p>Workout anytime that suits you.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Diet Guidance</h3>
+                <p>Nutrition support for faster progress.</p>
+            </div>
         </div>
-
-        <div class="feature-box">
-          <h3>Modern Equipment</h3>
-          <p>Latest machines for best results.</p>
-        </div>
-
-        <div class="feature-box">
-          <h3>Flexible Timings</h3>
-          <p>Workout anytime that suits you.</p>
-        </div>
-
-        <div class="feature-box">
-          <h3>Diet Guidance</h3>
-          <p>Nutrition support for faster progress.</p>
-        </div>
-      </div>
     </section>
 
     <!-- ================= PROGRAMS ================= -->
     <section id="program" class="programs">
-      <h2>Our Programs</h2>
-
-      <div class="program-list">
-        <div class="program-card">Weight Training</div>
-        <div class="program-card">Cardio</div>
-        <div class="program-card">CrossFit</div>
-        <div class="program-card">Yoga</div>
-        <div class="program-card">Zumba</div>
-        <div class="program-card">Personal Training</div>
-      </div>
+        <h2>Our Programs</h2>
+        <div class="program-list">
+            <div class="program-card">Weight Training</div>
+            <div class="program-card">Cardio</div>
+            <div class="program-card">CrossFit</div>
+            <div class="program-card">Yoga</div>
+            <div class="program-card">Zumba</div>
+            <div class="program-card">Personal Training</div>
+        </div>
     </section>
 
     <!-- ================= MEMBERSHIP PLANS ================= -->
     <section id="price" class="pricing">
-      <h2>Membership Plans</h2>
-
-      <div class="pricing-cards">
-        <div class="price-card">
-          <h3>Basic</h3>
-          <p>₹999 / month</p>
-          <p>Gym Access</p>
-          <a href="joinNow.html">Join Now</a>
+        <h2>Membership Plans</h2>
+        <div class="pricing-cards">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <p>₹999 / month</p>
+                <p>Gym Access</p>
+                <a href="joinNow.html" class="primary-btn">Join Now</a>
+            </div>
+            <div class="price-card">
+                <h3>Standard</h3>
+                <p>₹1999 / month</p>
+                <p>Gym + Cardio</p>
+                <a href="joinNow.html" class="primary-btn">Join Now</a>
+            </div>
+            <div class="price-card">
+                <h3>Premium</h3>
+                <p>₹2999 / month</p>
+                <p>All Access + Personal Training</p>
+                <a href="joinNow.html" class="primary-btn">Join Now</a>
+            </div>
         </div>
-
-        <div class="price-card">
-          <h3>Standard</h3>
-          <p>₹1999 / month</p>
-          <p>Gym + Cardio</p>
-          <a href="joinNow.html">Join Now</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Premium</h3>
-          <p>₹2999 / month</p>
-          <p>All Access + Personal Training</p>
-          <a href="joinNow.html">Join Now</a>
-        </div>
-      </div>
     </section>
 
     <!-- ================= TRAINERS ================= -->
     <section id="trainer" class="trainers">
-      <h2>Our Trainers</h2>
-
-      <div class="trainer-list">
-        <div class="trainer-card">
-          <h3>Trainer Name</h3>
-          <p>Strength Coach</p>
+        <h2>Our Trainers</h2>
+        <div class="trainer-list">
+            <div class="trainer-card">
+                <h3>Trainer Name</h3>
+                <p>Strength Coach</p>
+            </div>
+            <div class="trainer-card">
+                <h3>Trainer Name</h3>
+                <p>Fitness Expert</p>
+            </div>
+            <div class="trainer-card">
+                <h3>Trainer Name</h3>
+                <p>Yoga Instructor</p>
+            </div>
         </div>
-
-        <div class="trainer-card">
-          <h3>Trainer Name</h3>
-          <p>Fitness Expert</p>
-        </div>
-
-        <div class="trainer-card">
-          <h3>Trainer Name</h3>
-          <p>Yoga Instructor</p>
-        </div>
-      </div>
     </section>
 
     <!-- ================= TESTIMONIALS ================= -->
-    <section  class="testimonials">
-      <h2>Transformations & Reviews</h2>
-
-      <div class="review">
-        <p>⭐⭐⭐⭐⭐</p>
-        <p>"Best gym I have ever joined. Amazing trainers!"</p>
-      </div>
-
-      <div class="review">
-        <p>⭐⭐⭐⭐⭐</p>
-        <p>"Great atmosphere and modern equipment."</p>
-      </div>
+    <section class="testimonials">
+        <h2>Transformations & Reviews</h2>
+        <div class="review">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"Best gym I have ever joined. Amazing trainers!"</p>
+        </div>
+        <div class="review">
+            <p>⭐⭐⭐⭐⭐</p>
+            <p>"Great atmosphere and modern equipment."</p>
+        </div>
     </section>
 
     <!-- ================= CTA ================= -->
     <section class="cta">
-      <h2>Ready to Start Your Fitness Journey?</h2>
-      <a href="joinNow.html">Join Now</a>
+        <h2>Ready to Start Your Fitness Journey?</h2>
+        <a href="joinNow.html" class="primary-btn">Join Now</a>
     </section>
 
     <!-- ================= FOOTER ================= -->
     <footer>
-      <div class="footer-content">
-        <h3>Gym Name</h3>
-        <p>Address: Your Gym Address Here</p>
-        <p>Phone: +91 XXXXXXXX</p>
-        <p>Email: info@gym.com</p>
-      </div>
-
-      <p>© 2026 Gym Website. All Rights Reserved.</p>
+        <div class="footer-content">
+            <h3>THE TITAN GYM</h3>
+            <p>Address: Your Gym Address Here</p>
+            <p>Phone: +91 XXXXXXXX</p>
+            <p>Email: info@gym.com</p>
+        </div>
+        <p>© 2026 THE TITAN GYM. All Rights Reserved.</p>
     </footer>
-  </body>
+
+    <script src="Script/main.js"></script>
+</body>
 </html>
