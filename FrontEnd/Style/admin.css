@@ -1,0 +1,564 @@
+/* ==============================
+GLOBAL
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* ==============================
+DASHBOARD LAYOUT
+============================== */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==============================
+SIDEBAR
+============================== */
+.sidebar {
+    width: 250px;
+    background: #111;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo h2 {
+    color: #ff3c3c;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sidebar-menu {
+    list-style: none;
+    flex: 1;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover {
+    background: #ff3c3c;
+}
+
+/* ==============================
+LOGOUT BUTTON
+============================== */
+#logoutBtn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #ff3c3c;
+    border: 1px solid #ff3c3c;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: auto;
+}
+
+#logoutBtn:hover {
+    background: #ff3c3c;
+    color: #fff;
+}
+
+/* ==============================
+MAIN CONTENT
+============================== */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-x: auto;
+}
+
+/* ==============================
+STATS CARDS
+============================== */
+.stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #1a1a1a;
+    padding: 20px 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    border-color: #ff3c3c;
+    transform: translateY(-4px);
+}
+
+.stat-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #ff3c3c;
+}
+
+.stat-card p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ==============================
+MEMBERS HEADER
+============================== */
+.members-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#addMemberBtn {
+    padding: 10px 20px;
+    background: #ff3c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+#addMemberBtn:hover {
+    background: #ff2020;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+ADD MEMBER FORM
+============================== */
+.add-member-form {
+    background: #1a1a1a;
+    padding: 25px 30px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    margin-bottom: 30px;
+}
+
+.add-member-form h3 {
+    margin-bottom: 20px;
+    color: #ff3c3c;
+}
+
+.add-member-form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #0f0f0f;
+    color: #fff;
+    width: 100%;
+}
+
+.add-member-form select:focus {
+    outline: none;
+    border-color: #ff3c3c;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.form-buttons #saveMemberBtn {
+    padding: 10px 20px;
+    background: #ff3c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-buttons #saveMemberBtn:hover {
+    background: #ff2020;
+}
+
+.form-buttons #cancelMemberBtn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #ff3c3c;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-buttons #cancelMemberBtn:hover {
+    background: #ff3c3c;
+}
+
+/* ==============================
+MEMBERS TABLE
+============================== */
+.members-section h2 {
+    font-size: 24px;
+    color: #ff3c3c;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead th {
+    text-align: left;
+    padding: 12px 15px;
+    background: #111;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #222;
+}
+
+tbody tr:hover {
+    background: #222;
+}
+
+/* ==============================
+MEMBERSHIP EXPIRY ALERTS
+============================== */
+tbody tr.expired {
+    background: rgba(231, 76, 60, 0.2);
+    border-left: 3px solid #e74c3c;
+}
+
+tbody tr.expiring-soon {
+    background: rgba(241, 196, 15, 0.2);
+    border-left: 3px solid #f1c40f;
+}
+
+tbody tr.expired:hover {
+    background: rgba(231, 76, 60, 0.3);
+}
+
+tbody tr.expiring-soon:hover {
+    background: rgba(241, 196, 15, 0.3);
+}
+
+/* ==============================
+MEMBERS DELETE BUTTON
+============================== */
+.members-section table .delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.members-section table .delete:hover {
+    background-color: #c0392b;
+}
+
+/* ==============================
+ENQUIRY TABLE BUTTONS
+============================== */
+.enquiries-table button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+.enquiries-table .view {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.enquiries-table .view:hover {
+    background-color: #2980b9;
+}
+
+.enquiries-table .delete {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.enquiries-table .delete:hover {
+    background-color: #c0392b;
+}
+
+/* ==============================
+SETTINGS & ENQUIRIES
+============================== */
+.dashboard-section h2 {
+    margin-bottom: 20px;
+    color: #ff3c3c;
+}
+
+/* ==============================
+SETTINGS TABS HEADER
+============================== */
+.settings-tabs-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.settings-tab-btn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.settings-tab-btn.active {
+    background: #ff3c3c;
+    border-color: #ff3c3c;
+}
+
+.settings-tab-btn:hover {
+    border-color: #ff3c3c;
+}
+
+/* ==============================
+SETTINGS - ADMIN PROFILE
+============================== */
+.settings-tab {
+    background: #1a1a1a;
+    padding: 25px 30px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    max-width: 600px;
+}
+
+.settings-tab h3 {
+    margin-bottom: 20px;
+    color: #ff3c3c;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"],
+.form-group input[type="date"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff3c3c;
+}
+
+.save-btn {
+    padding: 10px 20px;
+    background: #ff3c3c;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background: #ff2020;
+}
+
+/* ==============================
+CONTENT EDITOR
+============================== */
+.settings-tab#website-content-tab {
+    max-width: 100%;
+}
+
+.content-group {
+    background: #0f0f0f;
+    padding: 20px 25px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    margin-bottom: 20px;
+}
+
+.content-group h4 {
+    color: #ff3c3c;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.content-item {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    margin-bottom: 10px;
+}
+
+/* ==============================
+ADD / REMOVE ITEM BUTTONS
+============================== */
+.add-item-btn {
+    padding: 8px 16px;
+    background: transparent;
+    color: #ff3c3c;
+    border: 1px dashed #ff3c3c;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.add-item-btn:hover {
+    background: #ff3c3c;
+    color: #fff;
+}
+
+.delete-item-btn {
+    padding: 6px 12px;
+    background: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s;
+    margin-top: 8px;
+}
+
+.delete-item-btn:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* ==============================
+RESPONSIVE
+============================== */
+@media(max-width:900px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .stat-card p {
+        font-size: 24px;
+    }
+
+    .settings-tabs-header {
+        flex-direction: column;
+    }
+
+    .settings-tab-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .settings-tab {
+        max-width: 100%;
+    }
+
+    .content-group {
+        padding: 15px;
+    }
+
+    #logoutBtn {
+        width: auto;
+        margin-top: 0;
+    }
+}
+
+@media(max-width:600px) {
+    .sidebar-menu li a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .stat-card h3 {
+        font-size: 16px;
+    }
+
+    .stat-card p {
+        font-size: 20px;
+    }
+
+    .settings-tab-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .content-group h4 {
+        font-size: 14px;
+    }
+
+    .content-group {
+        padding: 12px;
+    }
+}

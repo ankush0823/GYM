@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - THE TITAN GYM</title>
+    <link rel="stylesheet" href="Style/admin.css" />
+</head>
+
+<body>
+
+    <!-- DASHBOARD WRAPPER -->
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>THE TITAN GYM</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" data-section="dashboard"><a href="javascript:void(0)">Dashboard</a></li>
+                <li data-section="settings"><a href="javascript:void(0)">Settings</a></li>
+                <li data-section="enquiries"><a href="javascript:void(0)">Enquiries</a></li>
+            </ul>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+
+            <!-- DASHBOARD SECTION -->
+            <div id="dashboard-section" class="dashboard-section">
+                <h2>Dashboard Summary</h2>
+
+                <!-- STATS CARDS -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Members</h3>
+                        <p id="totalMembers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Memberships</h3>
+                        <p id="activeMemberships">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Enquiries</h3>
+                        <p id="totalEnquiries">0</p>
+                    </div>
+                </div>
+
+                <!-- MEMBERS TABLE -->
+                <div class="members-section">
+                    <div class="members-header">
+                        <h2>Members Details</h2>
+                        <button id="addMemberBtn">+ Add Member</button>
+                    </div>
+
+                    <!-- FORM FOR ADDING NEW MEMBER -->
+                    <div class="add-member-form" id="addMemberForm" style="display:none;">
+                        <h3>Add New Member</h3>
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" id="newName" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="newEmail" placeholder="Enter email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="text" id="newPhone" placeholder="Enter phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Membership Plan:</label>
+                            <select id="newPlan">
+                                <option value="Basic">Basic</option>
+                                <option value="Standard">Standard</option>
+                                <option value="Premium">Premium</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Join Date:</label>
+                            <input type="date" id="newJoinDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date:</label>
+                            <input type="date" id="newExpiryDate" required>
+                        </div>
+                        <div class="form-buttons">
+                            <button id="saveMemberBtn">Save Member</button>
+                            <button id="cancelMemberBtn">Cancel</button>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Membership Plan</th>
+                                <th>Join Date</th>
+                                <th>Expiry Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SETTINGS SECTION -->
+            <div id="settings-section" class="dashboard-section" style="display:none;">
+                <h2>Settings</h2>
+
+                <!-- SETTINGS TABS HEADER -->
+                <div class="settings-tabs-header">
+                    <button class="settings-tab-btn active" data-tab="admin-profile-tab">Admin Profile</button>
+                    <button class="settings-tab-btn" data-tab="website-content-tab">Website Content</button>
+                </div>
+
+                <!-- ADMIN PROFILE TAB -->
+                <div class="settings-tab" id="admin-profile-tab">
+                    <h3>Admin Profile</h3>
+                    <form id="adminProfileForm">
+                        <div class="form-group">
+                            <label for="adminName">Name:</label>
+                            <input type="text" id="adminName" value="Admin Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminEmail">Email:</label>
+                            <input type="email" id="adminEmail" value="admin@gym.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Password:</label>
+                            <input type="password" id="adminPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminProfilePic">Profile Picture:</label>
+                            <input type="file" id="adminProfilePic" accept="image/*">
+                        </div>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+
+                <!-- WEBSITE CONTENT TAB -->
+                <div class="settings-tab" id="website-content-tab" style="display:none;">
+                    <h3>Website Content</h3>
+
+                    <!-- HERO SECTION -->
+                    <div class="content-group">
+                        <h4>Hero Section</h4>
+                        <div class="form-group">
+                            <label>Title:</label>
+                            <input type="text" id="editHeroTitle">
+                        </div>
+                        <div class="form-group">
+                            <label>Subtitle:</label>
+                            <input type="text" id="editHeroSubtitle">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input type="text" id="editHeroDescription">
+                        </div>
+                    </div>
+
+                    <!-- GYM INFO -->
+                    <div class="content-group">
+                        <h4>Gym Info</h4>
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <input type="text" id="editGymAddress">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="text" id="editGymPhone">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="editGymEmail">
+                        </div>
+                    </div>
+
+                    <!-- PLANS -->
+                    <div class="content-group">
+                        <h4>Membership Plans</h4>
+                        <div id="plansEditor"></div>
+                    </div>
+
+                    <!-- TRAINERS -->
+                    <div class="content-group">
+                        <h4>Trainers</h4>
+                        <div id="trainersEditor"></div>
+                    </div>
+
+                    <!-- PROGRAMS -->
+                    <div class="content-group">
+                        <h4>Programs</h4>
+                        <div id="programsEditor"></div>
+                    </div>
+
+                    <button id="saveContentBtn" class="save-btn">Save All Changes</button>
+                </div>
+
+            </div>
+
+            <!-- ENQUIRIES SECTION -->
+            <div id="enquiries-section" class="dashboard-section" style="display:none;">
+                <h2>Enquiries / Contact Messages</h2>
+                <table class="enquiries-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Date Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enquiriesTable"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="Script/admin.js"></script>
+</body>
+
+</html>
