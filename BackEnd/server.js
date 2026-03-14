@@ -30,7 +30,7 @@ app.get('/', (req, res) => res.send('ABC Gym Backend is Running!'));
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('MongoDB connected successfully!');
-   app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
+   app.listen(process.env.PORT || 10000, '0.0.0.0', () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
 })
