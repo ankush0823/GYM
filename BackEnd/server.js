@@ -25,13 +25,13 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/reviews', reviewRoutes);
 
-app.get('/', (req, res) => res.send('Titan Gym Backend is Running!'));
+app.get('/', (req, res) => res.send('ABC Gym Backend is Running!'));
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('MongoDB connected successfully!');
-    app.listen(process.env.PORT, () => {
-        console.log(`Server is running on port ${process.env.PORT}`);
-    });
+   app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
 })
 .catch((err) => console.log('MongoDB connection failed!', err));
