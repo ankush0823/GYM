@@ -3,13 +3,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// LOAD ENV VARIABLES
 dotenv.config();
 
-// CREATE EXPRESS APP
 const app = express();
 
-// MIDDLEWARE
 app.use(cors());
 app.use(express.json());
 
@@ -18,18 +15,18 @@ const memberRoutes = require('./routes/memberRoutes');
 const enquiryRoutes = require('./routes/enquiryRoutes');
 const contentRoutes = require('./routes/contentRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const galleryRoutes = require('./routes/galleryRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 app.use('/api/members', memberRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/content', contentRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/gallery', galleryRoutes);
+app.use('/api/reviews', reviewRoutes);
 
-// TEST ROUTE
-app.get('/', (req, res) => {
-    res.send('Titan Gym Backend is Running!');
-});
+app.get('/', (req, res) => res.send('Titan Gym Backend is Running!'));
 
-// CONNECT TO MONGODB
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('MongoDB connected successfully!');
@@ -37,6 +34,4 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(`Server is running on port ${process.env.PORT}`);
     });
 })
-.catch((err) => {
-    console.log('MongoDB connection failed!', err);
-});
+.catch((err) => console.log('MongoDB connection failed!', err));

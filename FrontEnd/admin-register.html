@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration - THE ABC GYM</title>
+    <link rel="stylesheet" href="Style/login.css">
+    <style>
+        .blocked-box {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .blocked-icon {
+            font-size: 52px;
+            margin-bottom: 14px;
+        }
+        .blocked-box h3 {
+            color: #ff3c3c;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        .blocked-box p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        #checkingMsg {
+            color: #888;
+            font-size: 14px;
+            margin: 10px 0 18px;
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 50px;
+            margin-bottom: 12px;
+        }
+        #successBox { text-align: center; }
+        #successBox h3 { color: #2ecc71; font-size: 22px; margin-bottom: 8px; }
+        #successBox p { color: #aaa; font-size: 14px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>THE ABC GYM</h2>
+        <p id="subTitle">Create Admin Account</p>
+
+        <!-- Checking state -->
+        <div id="checkingMsg">Checking registration status...</div>
+
+        <!-- Registration Form -->
+        <form id="registerForm" style="display:none;">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Create a strong password">
+            </div>
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password">
+            </div>
+            <button type="submit" class="login-btn">Register & Continue</button>
+            <div class="extra-text">
+                Already have an account? <a href="admin-login.html">Login</a>
+            </div>
+        </form>
+
+        <!-- Already registered - blocked -->
+        <div id="blockedBox" style="display:none;" class="blocked-box">
+            <div class="blocked-icon">🔒</div>
+            <h3>Registration Closed</h3>
+            <p>An admin account already exists.<br>Only one admin is allowed for this system.</p>
+            <a href="admin-login.html" class="login-btn" style="display:block; text-decoration:none; text-align:center;">Go to Login</a>
+        </div>
+
+        <!-- Success state -->
+        <div id="successBox" style="display:none;">
+            <div class="success-icon">✅</div>
+            <h3>Account Created!</h3>
+            <p>Your admin account has been set up successfully.<br>Redirecting to login...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "http://localhost:5000/api";
+
+    // ON LOAD: check if admin already exists
+    async function checkAdminExists() {
+        try {
+            const res = await fetch(`${API_URL}/admin/check`);
+            const data = await res.json();
+            document.getElementById("checkingMsg").style.display = "none";
+
+            if (data.exists) {
+                document.getElementById("subTitle").textContent = "Registration Closed";
+                document.getElementById("blockedBox").style.display = "block";
+            } else {
+                document.getElementById("subTitle").textContent = "Create Admin Account";
+                document.getElementById("registerForm").style.display = "block";
+            }
+        } catch (err) {
+            document.getElementById("checkingMsg").textContent = "Could not connect to server. Please try again.";
+            console.error(err);
+        }
+    }
+
+    checkAdminExists();
+
+    // REGISTER FORM SUBMIT
+    document.getElementById("registerForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (!name || !email || !password || !confirmPassword) {
+            alert("Please fill in all fields!");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters!");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_URL}/admin/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                // Show success, then auto-login and redirect
+                document.getElementById("registerForm").style.display = "none";
+                document.getElementById("successBox").style.display = "block";
+                document.getElementById("subTitle").textContent = "Welcome aboard!";
+
+                // Auto-login
+                const loginRes = await fetch(`${API_URL}/admin/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+                const loginData = await loginRes.json();
+
+                if (loginRes.ok) {
+                    localStorage.setItem("adminToken", loginData.token);
+                    setTimeout(() => {
+                        window.location.href = "admin.html";
+                    }, 1800);
+                } else {
+                    setTimeout(() => { window.location.href = "admin-login.html"; }, 1800);
+                }
+            } else {
+                alert(data.message || "Registration failed. Please try again.");
+            }
+        } catch (err) {
+            alert("Something went wrong. Please try again!");
+            console.error(err);
+        }
+    });
+</script>
+
+</body>
+</html>

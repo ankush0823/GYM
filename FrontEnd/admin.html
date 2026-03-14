@@ -4,73 +4,106 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard - THE TITAN GYM</title>
+    <title>Admin Dashboard - THE ABC GYM</title>
     <link rel="stylesheet" href="Style/admin.css" />
+     
 </head>
 
 <body>
 
-    <!-- DASHBOARD WRAPPER -->
+    <!-- EDIT MEMBER MODAL -->
+    <div class="modal-overlay" id="editMemberModal">
+        <div class="modal-box">
+            <h3>✏️ Edit Member</h3>
+            <input type="hidden" id="editMemberId">
+            <div class="form-group"><label>Name</label><input type="text" id="editMemberName" placeholder="Full name"></div>
+            <div class="form-group"><label>Email</label><input type="email" id="editMemberEmail" placeholder="Email address"></div>
+            <div class="form-group"><label>Phone</label><input type="text" id="editMemberPhone" placeholder="Phone number"></div>
+            <div class="form-group">
+                <label>Membership Plan</label>
+                <select id="editMemberPlan">
+                    <option value="Basic">Basic</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Join Date</label><input type="date" id="editMemberJoinDate"></div>
+            <div class="form-group"><label>Expiry Date</label><input type="date" id="editMemberExpiryDate"></div>
+            <div class="modal-actions">
+                <button class="modal-cancel-btn" onclick="closeEditModal()">Cancel</button>
+                <button class="modal-save" onclick="saveEditMember()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT CAPTION MODAL -->
+    <div class="modal-overlay" id="editCaptionModal">
+        <div class="modal-box" style="max-width:400px;">
+            <h3>✏️ Edit Caption</h3>
+            <input type="hidden" id="editCaptionId">
+            <div class="form-group">
+                <label>Caption <span style="color:#555;font-weight:400;">(optional)</span></label>
+                <input type="text" id="editCaptionText" placeholder="Enter a caption for this photo">
+            </div>
+            <div class="modal-actions">
+                <button class="modal-cancel-btn" onclick="closeEditCaptionModal()">Cancel</button>
+                <button class="modal-save" onclick="saveCaption()">Save Caption</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE ACCOUNT MODAL -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="confirm-modal-box">
+            <h3>⚠️ Delete Account</h3>
+            <p>This action is permanent and cannot be undone.<br>Enter your password to confirm.</p>
+            <input type="password" id="deleteConfirmPassword" placeholder="Enter your current password">
+            <div class="modal-actions">
+                <button class="modal-cancel-btn" onclick="closeDeleteModal()">Cancel</button>
+                <button class="modal-save" style="background:#e74c3c;" onclick="confirmDeleteAccount()">Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- DASHBOARD -->
     <div class="dashboard">
 
         <!-- SIDEBAR -->
         <div class="sidebar">
-            <div class="logo">
-                <h2>THE TITAN GYM</h2>
-            </div>
+            <div class="logo"><h2>THE ABC GYM</h2></div>
             <ul class="sidebar-menu">
                 <li class="active" data-section="dashboard"><a href="javascript:void(0)">Dashboard</a></li>
+                <li data-section="gallery"><a href="javascript:void(0)">Gallery</a></li>
+                <li data-section="reviews"><a href="javascript:void(0)">Reviews</a></li>
                 <li data-section="settings"><a href="javascript:void(0)">Settings</a></li>
                 <li data-section="enquiries"><a href="javascript:void(0)">Enquiries</a></li>
             </ul>
             <button id="logoutBtn">Logout</button>
         </div>
 
-        <!-- MAIN CONTENT -->
         <div class="main-content">
 
-            <!-- DASHBOARD SECTION -->
+            <!-- DASHBOARD -->
             <div id="dashboard-section" class="dashboard-section">
                 <h2>Dashboard Summary</h2>
-
-                <!-- STATS CARDS -->
                 <div class="stats">
-                    <div class="stat-card">
-                        <h3>Total Members</h3>
-                        <p id="totalMembers">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Active Memberships</h3>
-                        <p id="activeMemberships">0</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Total Enquiries</h3>
-                        <p id="totalEnquiries">0</p>
-                    </div>
+                    <div class="stat-card"><h3>Total Members</h3><p id="totalMembers">0</p></div>
+                    <div class="stat-card"><h3>Active Memberships</h3><p id="activeMemberships">0</p></div>
+                    <div class="stat-card"><h3>Total Enquiries</h3><p id="totalEnquiries">0</p></div>
                 </div>
-
-                <!-- MEMBERS TABLE -->
                 <div class="members-section">
                     <div class="members-header">
                         <h2>Members Details</h2>
                         <button id="addMemberBtn">+ Add Member</button>
                     </div>
-
-                    <!-- FORM FOR ADDING NEW MEMBER -->
                     <div class="add-member-form" id="addMemberForm" style="display:none;">
                         <h3>Add New Member</h3>
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input type="text" id="newName" placeholder="Enter name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email:</label>
-                            <input type="email" id="newEmail" placeholder="Enter email" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone:</label>
-                            <input type="text" id="newPhone" placeholder="Enter phone" required>
-                        </div>
+                        <div class="form-group"><label>Name:</label><input type="text" id="newName" placeholder="Enter name"></div>
+                        <div class="form-group"><label>Email:</label><input type="email" id="newEmail" placeholder="Enter email"></div>
+                        <div class="form-group"><label>Phone:</label><input type="text" id="newPhone" placeholder="Enter phone"></div>
                         <div class="form-group">
                             <label>Membership Plan:</label>
                             <select id="newPlan">
@@ -79,42 +112,80 @@
                                 <option value="Premium">Premium</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Join Date:</label>
-                            <input type="date" id="newJoinDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Expiry Date:</label>
-                            <input type="date" id="newExpiryDate" required>
-                        </div>
+                        <div class="form-group"><label>Join Date:</label><input type="date" id="newJoinDate"></div>
+                        <div class="form-group"><label>Expiry Date:</label><input type="date" id="newExpiryDate"></div>
                         <div class="form-buttons">
                             <button id="saveMemberBtn">Save Member</button>
                             <button id="cancelMemberBtn">Cancel</button>
                         </div>
                     </div>
-
+                    <div class="table-controls">
+                        <input type="text" id="memberSearch" class="search-input" placeholder="🔍  Search by name, email or phone...">
+                        <select id="memberPlanFilter" class="filter-select">
+                            <option value="all">All Plans</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                        <select id="memberStatusFilter" class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="expired">Expired</option>
+                            <option value="expiring">Expiring Soon</option>
+                        </select>
+                    </div>
                     <table>
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Membership Plan</th>
-                                <th>Join Date</th>
-                                <th>Expiry Date</th>
-                                <th>Actions</th>
-                            </tr>
+                            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Plan</th><th>Join Date</th><th>Expiry Date</th><th>Actions</th></tr>
                         </thead>
                         <tbody id="membersTable"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- SETTINGS SECTION -->
+            <!-- GALLERY -->
+            <div id="gallery-section" class="dashboard-section" style="display:none;">
+                <h2>Gallery Management</h2>
+                <div class="gallery-upload-box">
+                    <h3>Upload New Photo</h3>
+                    <div class="file-drop-zone" id="fileDropZone">
+                        <input type="file" id="galleryFileInput" accept="image/jpeg,image/png,image/webp">
+                        <div class="drop-icon">🖼️</div>
+                        <p><span>Click to choose</span> or drag & drop an image here</p>
+                        <p style="font-size:12px;margin-top:4px;">JPEG, PNG, WebP — max 10MB</p>
+                    </div>
+                    <div class="upload-preview" id="uploadPreview"><img id="uploadPreviewImg" src="" alt="Preview"></div>
+                    <div class="upload-progress" id="uploadProgress">
+                        <div class="upload-progress-bar"><div class="upload-progress-fill" id="uploadProgressFill"></div></div>
+                        <p style="font-size:12px;color:#666;margin-top:6px;text-align:center;">Uploading to Cloudinary...</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Caption <span style="color:#555;font-weight:400;font-size:12px;">(optional)</span></label>
+                        <input type="text" id="galleryCaption" placeholder="e.g. Our cardio zone">
+                    </div>
+                    <button id="uploadImageBtn" disabled>Upload Photo</button>
+                </div>
+                <h3 style="color:#ff3c3c;margin-bottom:16px;">Uploaded Photos <span id="galleryCount" style="color:#555;font-size:14px;font-weight:400;"></span></h3>
+                <div class="gallery-admin-grid" id="galleryAdminGrid"></div>
+            </div>
+
+            <!-- REVIEWS -->
+            <div id="reviews-section" class="dashboard-section" style="display:none;">
+                <h2>Reviews Management</h2>
+                <div class="reviews-admin-controls">
+                    <input type="text" id="reviewSearch" class="search-input" placeholder="🔍  Search by name or message...">
+                    <select id="reviewStatusFilter" class="filter-select">
+                        <option value="all">All Reviews</option>
+                        <option value="pending">Pending Approval</option>
+                        <option value="approved">Approved</option>
+                    </select>
+                </div>
+                <div id="reviewsAdminList"></div>
+            </div>
+
+            <!-- SETTINGS -->
             <div id="settings-section" class="dashboard-section" style="display:none;">
                 <h2>Settings</h2>
-
-                <!-- SETTINGS TABS HEADER -->
                 <div class="settings-tabs-header">
                     <button class="settings-tab-btn active" data-tab="admin-profile-tab">Admin Profile</button>
                     <button class="settings-tab-btn" data-tab="website-content-tab">Website Content</button>
@@ -124,65 +195,50 @@
                 <div class="settings-tab" id="admin-profile-tab">
                     <h3>Admin Profile</h3>
                     <form id="adminProfileForm">
+                        <div class="form-group"><label>Name:</label><input type="text" id="adminName" placeholder="Your name" required></div>
+                        <div class="form-group"><label>Email:</label><input type="email" id="adminEmail" placeholder="Your email" required></div>
                         <div class="form-group">
-                            <label for="adminName">Name:</label>
-                            <input type="text" id="adminName" value="Admin Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="adminEmail">Email:</label>
-                            <input type="email" id="adminEmail" value="admin@gym.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="adminPassword">Password:</label>
-                            <input type="password" id="adminPassword" placeholder="Enter new password">
-                        </div>
-                        <div class="form-group">
-                            <label for="adminProfilePic">Profile Picture:</label>
-                            <input type="file" id="adminProfilePic" accept="image/*">
+                            <label>New Password: <span style="color:#666;font-weight:400;font-size:12px;">(leave blank to keep current)</span></label>
+                            <input type="password" id="adminNewPassword" placeholder="Enter new password">
                         </div>
                         <button type="submit" class="save-btn">Save Changes</button>
                     </form>
+                    <div class="danger-zone">
+                        <h4>⚠️ Danger Zone</h4>
+                        <p>Permanently delete your admin account. After deletion, a new admin can register.</p>
+                        <button id="deleteAccountBtn">Delete Admin Account</button>
+                    </div>
                 </div>
 
                 <!-- WEBSITE CONTENT TAB -->
                 <div class="settings-tab" id="website-content-tab" style="display:none;">
                     <h3>Website Content</h3>
 
-                    <!-- HERO SECTION -->
+                    <!-- HERO -->
                     <div class="content-group">
                         <h4>Hero Section</h4>
-                        <div class="form-group">
-                            <label>Title:</label>
-                            <input type="text" id="editHeroTitle">
-                        </div>
-                        <div class="form-group">
-                            <label>Subtitle:</label>
-                            <input type="text" id="editHeroSubtitle">
-                        </div>
-                        <div class="form-group">
-                            <label>Description:</label>
-                            <input type="text" id="editHeroDescription">
-                        </div>
+                        <div class="form-group"><label>Title:</label><input type="text" id="editHeroTitle"></div>
+                        <div class="form-group"><label>Subtitle:</label><input type="text" id="editHeroSubtitle"></div>
+                        <div class="form-group"><label>Description:</label><input type="text" id="editHeroDescription"></div>
+                    </div>
+
+                    <!-- WHY CHOOSE US -->
+                    <div class="content-group">
+                        <h4>Why Choose Us</h4>
+                        <p style="color:#666;font-size:13px;margin-bottom:14px;">Add, edit or remove the feature cards shown in the Why Choose Us section.</p>
+                        <div id="whyUsEditor"></div>
+                        <button class="add-item-btn" onclick="addWhyUsItem()">+ Add Card</button>
                     </div>
 
                     <!-- GYM INFO -->
                     <div class="content-group">
                         <h4>Gym Info</h4>
-                        <div class="form-group">
-                            <label>Address:</label>
-                            <input type="text" id="editGymAddress">
-                        </div>
-                        <div class="form-group">
-                            <label>Phone:</label>
-                            <input type="text" id="editGymPhone">
-                        </div>
-                        <div class="form-group">
-                            <label>Email:</label>
-                            <input type="email" id="editGymEmail">
-                        </div>
+                        <div class="form-group"><label>Address:</label><input type="text" id="editGymAddress"></div>
+                        <div class="form-group"><label>Phone:</label><input type="text" id="editGymPhone"></div>
+                        <div class="form-group"><label>Email:</label><input type="email" id="editGymEmail"></div>
                     </div>
 
-                    <!-- PLANS -->
+                    <!-- MEMBERSHIP PLANS -->
                     <div class="content-group">
                         <h4>Membership Plans</h4>
                         <div id="plansEditor"></div>
@@ -191,33 +247,37 @@
                     <!-- TRAINERS -->
                     <div class="content-group">
                         <h4>Trainers</h4>
+                        <p style="color:#666;font-size:13px;margin-bottom:14px;">Edit trainer details and upload a photo. Photos are saved to Cloudinary immediately on selection.</p>
                         <div id="trainersEditor"></div>
+                        <button class="add-item-btn" onclick="addTrainer()">+ Add Trainer</button>
                     </div>
 
                     <!-- PROGRAMS -->
                     <div class="content-group">
                         <h4>Programs</h4>
+                        <p style="color:#666;font-size:13px;margin-bottom:14px;">Edit program names and upload a cover image. Images are saved immediately on selection.</p>
                         <div id="programsEditor"></div>
+                        <button class="add-item-btn" onclick="addProgram()">+ Add Program</button>
                     </div>
 
                     <button id="saveContentBtn" class="save-btn">Save All Changes</button>
                 </div>
-
             </div>
 
-            <!-- ENQUIRIES SECTION -->
+            <!-- ENQUIRIES -->
             <div id="enquiries-section" class="dashboard-section" style="display:none;">
                 <h2>Enquiries / Contact Messages</h2>
+                <div class="table-controls">
+                    <input type="text" id="enquirySearch" class="search-input" placeholder="🔍  Search by name, email or phone...">
+                    <select id="enquiryStatusFilter" class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
                 <table class="enquiries-table">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Message</th>
-                            <th>Date Submitted</th>
-                            <th>Actions</th>
-                        </tr>
+                        <tr><th>Name</th><th>Email</th><th>Phone</th><th>Message</th><th>Date</th><th>Status</th><th>Actions</th></tr>
                     </thead>
                     <tbody id="enquiriesTable"></tbody>
                 </table>
@@ -228,5 +288,4 @@
 
     <script src="Script/admin.js"></script>
 </body>
-
 </html>

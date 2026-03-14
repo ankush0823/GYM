@@ -61,6 +61,247 @@ SIDEBAR
     background: #ff3c3c;
 }
 
+
+ /* ══ SEARCH & FILTER ════════════════════════════ */
+        .table-controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px; }
+        .search-input { flex:1; min-width:200px; padding:10px 14px; background:#1a1a1a; border:1px solid #333; border-radius:8px; color:#fff; font-size:14px; outline:none; transition:0.3s; }
+        .search-input:focus { border-color:#ff3c3c; }
+        .search-input::placeholder { color:#555; }
+        .filter-select { padding:10px 14px; background:#1a1a1a; border:1px solid #333; border-radius:8px; color:#fff; font-size:14px; outline:none; cursor:pointer; transition:0.3s; }
+        .filter-select:focus { border-color:#ff3c3c; }
+
+        /* ══ EDIT BUTTON ════════════════════════════════ */
+        .members-section table .edit { padding:6px 12px; border:none; border-radius:4px; font-size:14px; cursor:pointer; transition:all 0.3s; background-color:#2980b9; color:#fff; margin-right:5px; }
+        .members-section table .edit:hover { background-color:#1f6391; }
+
+        /* ══ STATUS BADGE ═══════════════════════════════ */
+        .status-badge { display:inline-block; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; transition:0.3s; user-select:none; white-space:nowrap; }
+        .status-badge.pending { background:rgba(241,196,15,0.15); color:#f1c40f; border:1px solid rgba(241,196,15,0.4); }
+        .status-badge.pending:hover { background:rgba(241,196,15,0.25); }
+        .status-badge.resolved { background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.4); }
+        .status-badge.resolved:hover { background:rgba(46,204,113,0.25); }
+
+        /* ══ MODALS ══════════════════════════════════════ */
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center; padding:20px; }
+        .modal-overlay.active { display:flex; }
+        .modal-box { background:#161616; border:1px solid #2a2a2a; border-radius:14px; padding:30px; width:100%; max-width:520px; max-height:90vh; overflow-y:auto; }
+        .modal-box h3 { color:#ff3c3c; margin-bottom:20px; font-size:20px; }
+        .modal-box .form-group { margin-bottom:14px; }
+        .modal-box .form-group label { display:block; margin-bottom:5px; font-size:13px; color:#bbb; }
+        .modal-box .form-group input,
+        .modal-box .form-group select { width:100%; padding:10px 12px; background:#0f0f0f; border:1px solid #333; border-radius:6px; color:#fff; font-size:14px; outline:none; transition:0.3s; }
+        .modal-box .form-group input:focus,
+        .modal-box .form-group select:focus { border-color:#ff3c3c; }
+        .modal-actions { display:flex; gap:12px; margin-top:20px; }
+        .modal-actions button { flex:1; padding:11px; border-radius:6px; cursor:pointer; font-size:14px; border:none; transition:0.3s; }
+        .modal-save { background:#ff3c3c; color:#fff; }
+        .modal-save:hover { background:#ff2020; }
+        .modal-cancel-btn { background:transparent !important; color:#fff !important; border:1px solid #444 !important; }
+        .modal-cancel-btn:hover { border-color:#ff3c3c !important; }
+        .confirm-modal-box { background:#1a1a1a; border:1px solid #333; border-radius:14px; padding:30px; width:100%; max-width:400px; text-align:center; }
+        .confirm-modal-box h3 { color:#e74c3c; margin-bottom:10px; font-size:20px; }
+        .confirm-modal-box p { color:#aaa; font-size:14px; margin-bottom:20px; }
+        .confirm-modal-box input { width:100%; padding:10px 12px; background:#0f0f0f; border:1px solid #333; border-radius:6px; color:#fff; font-size:14px; margin-bottom:16px; outline:none; }
+        .confirm-modal-box input:focus { border-color:#e74c3c; }
+
+        /* ══ DANGER ZONE ════════════════════════════════ */
+        .danger-zone { background:rgba(231,76,60,0.08); border:1px solid rgba(231,76,60,0.35); border-radius:12px; padding:22px 28px; margin-top:28px; }
+        .danger-zone h4 { color:#e74c3c; font-size:15px; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; }
+        .danger-zone p { color:#888; font-size:13px; margin-bottom:16px; }
+        #deleteAccountBtn { padding:10px 22px; background:transparent; color:#e74c3c; border:1px solid #e74c3c; border-radius:6px; cursor:pointer; font-size:14px; transition:0.3s; }
+        #deleteAccountBtn:hover { background:#e74c3c; color:#fff; }
+
+        /* ══ TOAST ══════════════════════════════════════ */
+        .toast { position:fixed; bottom:30px; right:30px; background:#1a1a1a; border:1px solid #333; border-radius:8px; padding:14px 20px; color:#fff; font-size:14px; z-index:99999; display:none; animation:slideUp 0.3s ease; max-width:320px; }
+        .toast.success { border-color:#2ecc71; color:#2ecc71; }
+        .toast.error { border-color:#e74c3c; color:#e74c3c; }
+        @keyframes slideUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+        .no-results td { text-align:center; color:#555; padding:30px !important; font-size:14px; }
+
+        /* ══ GALLERY ADMIN ══════════════════════════════ */
+        .gallery-upload-box { background:#1a1a1a; border:2px dashed #333; border-radius:12px; padding:30px; text-align:center; margin-bottom:30px; transition:0.3s; }
+        .gallery-upload-box:hover { border-color:#ff3c3c; }
+        .gallery-upload-box h3 { color:#ff3c3c; margin-bottom:16px; }
+        .gallery-upload-box .form-group { text-align:left; max-width:500px; margin:0 auto 14px; }
+        .gallery-upload-box .form-group label { font-size:13px; color:#bbb; margin-bottom:6px; display:block; }
+        .gallery-upload-box .form-group input[type="text"] { width:100%; padding:10px 12px; background:#0f0f0f; border:1px solid #333; border-radius:6px; color:#fff; font-size:14px; outline:none; transition:0.3s; }
+        .gallery-upload-box .form-group input[type="text"]:focus { border-color:#ff3c3c; }
+        .file-drop-zone { border:2px dashed #333; border-radius:10px; padding:28px 20px; text-align:center; cursor:pointer; transition:0.3s; background:#0f0f0f; max-width:500px; margin:0 auto 16px; position:relative; }
+        .file-drop-zone:hover,.file-drop-zone.drag-over { border-color:#ff3c3c; background:rgba(255,60,60,0.05); }
+        .file-drop-zone input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+        .file-drop-zone p { color:#555; font-size:14px; pointer-events:none; }
+        .file-drop-zone p span { color:#ff3c3c; }
+        .file-drop-zone .drop-icon { font-size:32px; margin-bottom:8px; }
+        .upload-preview { max-width:500px; margin:0 auto 16px; display:none; }
+        .upload-preview img { width:100%; max-height:200px; object-fit:cover; border-radius:8px; border:1px solid #333; }
+        #uploadImageBtn { padding:11px 28px; background:#ff3c3c; color:#fff; border:none; border-radius:8px; font-size:15px; cursor:pointer; transition:0.3s; }
+        #uploadImageBtn:hover { background:#ff2020; }
+        #uploadImageBtn:disabled { background:#444; cursor:not-allowed; }
+        .gallery-admin-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+        .gallery-admin-item { position:relative; border-radius:10px; overflow:hidden; border:1px solid #222; background:#111; aspect-ratio:4/3; }
+        .gallery-admin-item img { width:100%; height:100%; object-fit:cover; display:block; }
+        .gallery-admin-item-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.6); opacity:0; transition:0.3s; display:flex; flex-direction:column; justify-content:space-between; padding:12px; }
+        .gallery-admin-item:hover .gallery-admin-item-overlay { opacity:1; }
+        .gallery-admin-caption { color:#fff; font-size:13px; background:rgba(0,0,0,0.5); border-radius:4px; padding:4px 8px; word-break:break-word; }
+        .gallery-admin-actions { display:flex; gap:8px; justify-content:flex-end; }
+        .gallery-admin-actions button { padding:5px 10px; border:none; border-radius:5px; font-size:12px; cursor:pointer; transition:0.3s; }
+        .btn-edit-caption { background:#2980b9; color:#fff; }
+        .btn-edit-caption:hover { background:#1f6391; }
+        .btn-delete-img { background:#e74c3c; color:#fff; }
+        .btn-delete-img:hover { background:#c0392b; }
+        .gallery-admin-empty { grid-column:1/-1; text-align:center; color:#444; padding:40px; font-size:14px; }
+        .upload-progress { display:none; max-width:500px; margin:0 auto 12px; }
+        .upload-progress-bar { height:4px; background:#333; border-radius:4px; overflow:hidden; }
+        .upload-progress-fill { height:100%; background:#ff3c3c; width:0%; transition:width 0.3s; animation:progressPulse 1.2s ease-in-out infinite; }
+        @keyframes progressPulse { 0%,100%{opacity:1}50%{opacity:0.6} }
+
+        /* ══ REVIEWS ADMIN ══════════════════════════════ */
+        .reviews-admin-controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:20px; }
+        .review-admin-card { background:#1a1a1a; border:1px solid #222; border-radius:12px; padding:20px 24px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:flex-start; gap:20px; transition:border-color 0.3s; }
+        .review-admin-card.pending-review { border-left:3px solid #f1c40f; }
+        .review-admin-card.approved-review { border-left:3px solid #2ecc71; }
+        .review-admin-info { flex:1; }
+        .review-admin-header { display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+        .review-admin-name { font-weight:600; font-size:15px; color:#fff; }
+        .review-admin-stars { color:#f1c40f; font-size:14px; letter-spacing:2px; }
+        .review-admin-date { font-size:12px; color:#555; margin-left:auto; }
+        .review-admin-message { color:#aaa; font-size:14px; line-height:1.6; margin-top:6px; }
+        .review-status-tag { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+        .review-status-tag.pending { background:rgba(241,196,15,0.15); color:#f1c40f; border:1px solid rgba(241,196,15,0.4); }
+        .review-status-tag.approved { background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.4); }
+        .review-admin-actions { display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
+        .btn-approve { padding:7px 16px; background:transparent; color:#2ecc71; border:1px solid #2ecc71; border-radius:6px; cursor:pointer; font-size:13px; transition:0.3s; white-space:nowrap; }
+        .btn-approve:hover { background:#2ecc71; color:#000; }
+        .btn-approve:disabled { opacity:0.4; cursor:not-allowed; }
+        .btn-reject { padding:7px 16px; background:transparent; color:#e74c3c; border:1px solid #e74c3c; border-radius:6px; cursor:pointer; font-size:13px; transition:0.3s; white-space:nowrap; }
+        .btn-reject:hover { background:#e74c3c; color:#fff; }
+        .reviews-admin-empty { text-align:center; color:#444; padding:40px; font-size:14px; }
+
+        /* ══ IMAGE UPLOAD ROW (Trainers & Programs) ═════ */
+        .content-item {
+            background: #1a1a1a;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            margin-bottom: 12px;
+        }
+
+        .content-item-img-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #2a2a2a;
+            flex-wrap: wrap;
+        }
+
+        .content-item-thumb {
+            width: 72px;
+            height: 72px;
+            border-radius: 8px;
+            object-fit: cover;
+            object-position: top;
+            border: 1px solid #333;
+            flex-shrink: 0;
+        }
+
+        .content-item-thumb-placeholder {
+            width: 72px;
+            height: 72px;
+            border-radius: 8px;
+            background: #111;
+            border: 1px dashed #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+            color: #444;
+        }
+
+        .content-item-img-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .content-item-img-actions label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 2px;
+        }
+
+        .btn-upload-img {
+            padding: 7px 14px;
+            background: transparent;
+            color: #ff3c3c;
+            border: 1px dashed #ff3c3c;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-upload-img:hover { background: rgba(255,60,60,0.1); }
+        .btn-upload-img:disabled { opacity:0.5; cursor:not-allowed; }
+
+        /* Hidden file input inside the button */
+        .btn-upload-img input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-remove-img {
+            padding: 5px 12px;
+            background: transparent;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
+            width: fit-content;
+        }
+
+        .btn-remove-img:hover { background: #e74c3c; color: #fff; }
+
+        .img-upload-status {
+            font-size: 11px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ══ WHY US EDITOR ══════════════════════════════ */
+        .why-us-item {
+            background: #1a1a1a;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            margin-bottom: 12px;
+        }
+
+        /* ══ RESPONSIVE ═════════════════════════════════ */
+        @media (max-width:900px) {
+            .gallery-admin-grid { grid-template-columns:repeat(2,1fr); }
+            .review-admin-card { flex-direction:column; }
+            .review-admin-actions { flex-direction:row; }
+            .review-admin-date { margin-left:0; }
+        }
+        @media (max-width:600px) {
+            .gallery-admin-grid { grid-template-columns:1fr; }
+        }
+
+
 /* ==============================
 LOGOUT BUTTON
 ============================== */

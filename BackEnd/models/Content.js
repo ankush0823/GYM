@@ -13,10 +13,18 @@ const contentSchema = new mongoose.Schema({
     }],
     trainers: [{
         name: { type: String },
-        specialty: { type: String }
+        specialty: { type: String },
+        image: { type: String, default: '' },           
+        imagePublicId: { type: String, default: '' }    
     }],
     programs: [{
-        name: { type: String }
+        name: { type: String },
+        image: { type: String, default: '' },          
+        imagePublicId: { type: String, default: '' }    
+    }],
+    whyUs: [{
+        title: { type: String },
+        description: { type: String }
     }],
     gymInfo: {
         address: { type: String },

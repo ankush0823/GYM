@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>THE TITAN GYM</title>
+    <title>THE ABC GYM</title>
     <link rel="stylesheet" href="Style/index.css" />
 </head>
 <body>
 
-    <!-- ================= HEADER / NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
     <header>
         <nav>
-            <div class="logo">
-                <h2>THE TITAN GYM</h2>
-            </div>
-
+            <div class="logo"><h2>THE ABC GYM</h2></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#program">Programs</a></li>
                 <li><a href="#price">Pricing</a></li>
                 <li><a href="#trainer">Trainers</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li> 
             </ul>
-
             <div class="nav-btn">
                 <a href="joinNow.html" class="primary-btn">Join Now</a>
             </div>
-
-            <!-- HAMBURGER -->
             <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </nav>
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- ================= HERO ================= -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <img src="Images/hero-background.jpg" alt="hero-background">
@@ -51,23 +44,13 @@
     <!-- ================= WHY CHOOSE US ================= -->
     <section class="why-us">
         <h2>Why Choose Us</h2>
-        <div class="features">
-            <div class="feature-box">
-                <h3>Certified Trainers</h3>
-                <p>Professional and experienced trainers.</p>
-            </div>
-            <div class="feature-box">
-                <h3>Modern Equipment</h3>
-                <p>Latest machines for best results.</p>
-            </div>
-            <div class="feature-box">
-                <h3>Flexible Timings</h3>
-                <p>Workout anytime that suits you.</p>
-            </div>
-            <div class="feature-box">
-                <h3>Diet Guidance</h3>
-                <p>Nutrition support for faster progress.</p>
-            </div>
+        <!-- Populated dynamically by main.js from content.whyUs -->
+        <div class="features" id="featuresGrid">
+            <!-- Fallback static cards shown before JS loads -->
+            <div class="feature-box"><h3>Certified Trainers</h3><p>Professional and experienced trainers.</p></div>
+            <div class="feature-box"><h3>Modern Equipment</h3><p>Latest machines for best results.</p></div>
+            <div class="feature-box"><h3>Flexible Timings</h3><p>Workout anytime that suits you.</p></div>
+            <div class="feature-box"><h3>Diet Guidance</h3><p>Nutrition support for faster progress.</p></div>
         </div>
     </section>
 
@@ -89,16 +72,72 @@
         <div class="trainer-list" id="trainerList"></div>
     </section>
 
-    <!-- ================= TESTIMONIALS ================= -->
-    <section class="testimonials">
-        <h2>Transformations & Reviews</h2>
-        <div class="review">
-            <p>⭐⭐⭐⭐⭐</p>
-            <p>"Best gym I have ever joined. Amazing trainers!"</p>
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" class="gallery">
+        <h2>Our Gym</h2>
+        <p class="gallery-subtitle">A look inside THE TITAN GYM</p>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-prev" id="lightboxPrev">&#8249;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <p id="lightboxCaption"></p>
         </div>
-        <div class="review">
-            <p>⭐⭐⭐⭐⭐</p>
-            <p>"Great atmosphere and modern equipment."</p>
+        <button class="lightbox-next" id="lightboxNext">&#8250;</button>
+    </div>
+
+    <!-- ================= REVIEWS ================= -->
+    <section id="reviews" class="testimonials">
+        <h2>Transformations & Reviews</h2>
+        <p class="reviews-subtitle">What our members say about us</p>
+
+        <div class="reviews-layout">
+            <!-- LEFT: Reviews list -->
+            <div class="reviews-list-col">
+                <div id="reviewsList">
+                    <div class="reviews-loading">Loading reviews...</div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Submit form -->
+            <div class="reviews-form-col">
+                <div class="review-form-box">
+                    <h3>Leave a Review</h3>
+                    <p>Share your experience with THE TITAN GYM</p>
+
+                    <div class="review-form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="reviewName" placeholder="Enter your name">
+                    </div>
+
+                    <div class="review-form-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <input type="hidden" id="reviewRating" value="0">
+                    </div>
+
+                    <div class="review-form-group">
+                        <label>Your Review</label>
+                        <textarea id="reviewMessage" placeholder="Tell us about your experience..." rows="4"></textarea>
+                    </div>
+
+                    <button id="submitReviewBtn">Submit Review</button>
+
+                    <div class="review-success-msg" id="reviewSuccessMsg" style="display:none;">
+                        ✅ Thank you! Your review has been submitted and will appear after approval.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -111,12 +150,12 @@
     <!-- ================= FOOTER ================= -->
     <footer>
         <div class="footer-content">
-            <h3>THE TITAN GYM</h3>
+            <h3>THE ABC GYM</h3>
             <p>Address: <span id="gymAddress">Your Gym Address Here</span></p>
             <p>Phone: <span id="gymPhone">+91 XXXXXXXX</span></p>
             <p>Email: <span id="gymEmail">info@gym.com</span></p>
         </div>
-        <p>© 2026 THE TITAN GYM. All Rights Reserved.</p>
+        <p>© 2026 THE ABC GYM. All Rights Reserved.</p>
     </footer>
 
     <script src="Script/main.js"></script>
