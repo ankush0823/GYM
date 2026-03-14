@@ -1,7 +1,7 @@
 {
-  "name": "titan-gym-backend",
+  "name": "abc-gym-backend",
   "version": "1.0.0",
-  "description": "Backend for THE TITAN GYM website",
+  "description": "Backend for THE ABC GYM website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
